@@ -27,7 +27,7 @@ app.use('/comment', publicCommentsRouter);
 
 app.use('/user', privateUserRouter);
 
-// app.use('/post', privatePostRouter);
+app.use('/post', privatePostRouter);
 
 // app.use('/comment', privateCommentsRouter);
 
