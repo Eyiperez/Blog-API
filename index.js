@@ -18,7 +18,7 @@ app.use(bodyParser.json())
 
 app.use('/user', publicUserRouter);
 
-// app.use('/post', publicPostRouter);
+app.use('/post', publicPostRouter);
 
 // app.use('/comment', publicCommentsRouter);
 
