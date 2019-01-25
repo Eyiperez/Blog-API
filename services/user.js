@@ -32,10 +32,12 @@ UserService.readPost = (id, comment_id) => {
     return db.one('SELECT comments.*, users.username FROM comments LEFT JOIN users ON users.id = comments.author WHERE users.id = ${id} AND comments.id = ${comment_id}', { id: id, comment_id: comment_id });
 }
 
-UserService.update = (id, name, email) => {
-    return db.none('UPDATE users SET name = ${name}, email = ${email} WHERE id=${id}', { id, name, email });
+//UPDATE USER
+UserService.update = (id, username, email, password) => {
+    return db.none('UPDATE users SET username = ${username}, email = ${email}, password = ${password} WHERE id=${id}', { id, username, email, password });
  }
 
+//DELETE USER
 UserService.delete = (id) => { 
     return db.none('DELETE FROM users WHERE id=${id}', {id});
 }
