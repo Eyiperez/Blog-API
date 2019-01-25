@@ -17,6 +17,21 @@ UserService.readPosts = (id) => {
     return db.any('SELECT posts.*, users.username FROM posts LEFT JOIN users ON users.id = posts.author WHERE users.id = ${id}', { id: id });
 }
 
+//READ USER POST
+UserService.readPost = (id, post_id) => {
+    return db.one('SELECT posts.*, users.username FROM posts LEFT JOIN users ON users.id = posts.author WHERE users.id = ${id} AND posts.id = ${post_id}', { id: id, post_id: post_id });
+}
+
+//READ USER COMMENTS
+UserService.readComments = (id) => {
+    return db.any('SELECT comments.*, users.username FROM comments LEFT JOIN users ON users.id = comments.author WHERE users.id = ${id}', { id: id });
+}
+
+//READ USER COMMENT
+UserService.readPost = (id, comment_id) => {
+    return db.one('SELECT comments.*, users.username FROM comments LEFT JOIN users ON users.id = comments.author WHERE users.id = ${id} AND comments.id = ${comment_id}', { id: id, comment_id: comment_id });
+}
+
 UserService.update = (id, name, email) => {
     return db.none('UPDATE users SET name = ${name}, email = ${email} WHERE id=${id}', { id, name, email });
  }
