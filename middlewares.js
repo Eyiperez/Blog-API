@@ -12,16 +12,33 @@ const checkForToken = (req, res, next) => {
         const post_id = pathArr[pathArr.length - 1]
         return PostService.readAuthor(post_id)
             .then((data) => {
-                
-                console.log(data)
                 const userid = data[0].author
-                console.log(userid)
                 return UserService.readToken(userid)
             })
             .then((data) => {
                 if (data[0].token === authTokenInput) {
                     next()
-
+                } else {
+                    throw new Error('not logged in')
+                }
+            })
+            .catch(e => {
+                res.status(400)
+                res.json({
+                    "err": e.toString(),
+                })
+            })
+    }
+    if (pathArr[1] === 'comment') {
+        const comment_id = pathArr[pathArr.length - 1]
+        return CommentService.readAuthor(comment_id)
+            .then((data) => {
+                const userid = data[0].author
+                return UserService.readToken(userid)
+            })
+            .then((data) => {
+                if (data[0].token === authTokenInput) {
+                    next()
                 } else {
                     throw new Error('not logged in')
                 }
@@ -37,13 +54,11 @@ const checkForToken = (req, res, next) => {
         user_id = req.body.author
     } if (pathArr[1] === 'user') {
         user_id = pathArr[pathArr.length - 1]
-    } 
-    console.log(user_id)
+    }
     UserService.readToken(user_id)
         .then((data) => {
             if (data[0].token === authTokenInput) {
                 next()
-
             } else {
                 throw new Error('not logged in')
             }
@@ -54,9 +69,9 @@ const checkForToken = (req, res, next) => {
                 "err": e.toString(),
             })
         })
-    
-    
-    
+
+
+
 }
 
 

@@ -12,9 +12,14 @@ CommentService.read = (id) => {
     return db.one('SELECT * FROM posts WHERE id=${id}', { id: id });
 }
 
+//GET AUTHOR
+CommentService.readAuthor = (id) => {
+    return db.any ('SELECT author FROM comments WHERE id= ${id}', { id: id});
+}
+
 //UPDATE COMMENT
-CommentService.update = (id, author, title, body) => {
-    return db.none('UPDATE comments SET author = ${author}, title = ${title}, body = ${body} WHERE id=${id}', { id, author, title, body });
+CommentService.update = (id, title, body) => {
+    return db.none('UPDATE comments SET title = ${title}, body = ${body} WHERE id=${id}', { id, title, body });
 }
 
 //DELETE COMMENT
