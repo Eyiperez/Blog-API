@@ -18,9 +18,9 @@ postRouter.post('/', (req,res) => {
 
 // PUT - UPDATE USER
 postRouter.put('/:id', (req,res) => {
-    const { title, body} = req.body;
+    const { author,title, body} = req.body;
     const {id } = req.params
-    PostService.update(id, title, body)
+    PostService.update(id, author, title, body)
     .then(() =>{
         console.log({success: 'post updated'});
         res.json({success: 'post updated'});

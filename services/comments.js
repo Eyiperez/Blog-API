@@ -13,13 +13,13 @@ CommentService.read = (id) => {
 }
 
 //UPDATE COMMENT
-CommentService.update = (id,title, body) => {
-    return db.none('UPDATE comments SET title = ${title}, body = ${body} WHERE id=${id}', { id,title, body });
- }
+CommentService.update = (id, author, title, body) => {
+    return db.none('UPDATE comments SET author = ${author}, title = ${title}, body = ${body} WHERE id=${id}', { id, author, title, body });
+}
 
 //DELETE COMMENT
-CommentService.delete = (id) => { 
-    return db.none('DELETE FROM comments WHERE id=${id}', {id});
+CommentService.delete = (id) => {
+    return db.none('DELETE FROM comments WHERE id=${id}', { id });
 }
 
 

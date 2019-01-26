@@ -23,8 +23,8 @@ PostService.readComment = (id, comment_id) => {
 }
 
 //UPDATE POST
-PostService.update = (id, title, body) => {
-    return db.none('UPDATE posts SET title = ${title}, body = ${body} WHERE id=${id}', { id, title, body });
+PostService.update = (id, author, title, body) => {
+    return db.none('UPDATE posts SET  author = ${author}, title = ${title}, body = ${body} WHERE id=${id}', { id, author,title, body });
  }
 
 //DELETE POST

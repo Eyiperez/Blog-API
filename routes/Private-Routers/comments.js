@@ -18,9 +18,9 @@ commentRouter.post('/', (req,res) => {
 
 // PUT - UPDATE COMMENT
 commentRouter.put('/:id', (req,res) => {
-    const { title, body} = req.body;
+    const { author, title, body} = req.body;
     const {id } = req.params
-    CommentService.update(id, title, body)
+    CommentService.update(id, author, title, body)
     .then(() =>{
         console.log({success: 'comment updated'});
         res.json({success: 'comment updated'});

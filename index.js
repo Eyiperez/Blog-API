@@ -24,11 +24,9 @@ app.use('/post', publicPostRouter);
 
 app.use('/comment', publicCommentsRouter);
 
-app.use(authentication.checkForUserToken);
+app.use(authentication.checkForToken);
 
 app.use('/user', privateUserRouter);
-
-//app.use(authentication.checkForToken);
 
 app.use('/post', privatePostRouter);
 
