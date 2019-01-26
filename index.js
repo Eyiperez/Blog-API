@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+const authentication = require('./middlewares')
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -23,9 +24,11 @@ app.use('/post', publicPostRouter);
 
 app.use('/comment', publicCommentsRouter);
 
-//app.use(authentication);
+app.use(authentication.checkForUserToken);
 
 app.use('/user', privateUserRouter);
+
+//app.use(authentication.checkForToken);
 
 app.use('/post', privatePostRouter);
 

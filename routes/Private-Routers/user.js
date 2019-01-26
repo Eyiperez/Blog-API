@@ -4,10 +4,10 @@ const UserService = require('../../services/user');
 
 
 // PUT - UPDATE USER
-userRouter.put('/:id', (req,res) => {
+userRouter.put('/:user_id', (req,res) => {
     const { username, email, password} = req.body;
-    const {id } = req.params
-    UserService.update(id, username, email, password)
+    const { user_id } = req.params
+    UserService.update(user_id, username, email, password)
     .then(() =>{
         console.log({success: 'user updated'});
         res.json({success: 'user updated'});
@@ -18,12 +18,12 @@ userRouter.put('/:id', (req,res) => {
 });
 
 // DELETE - DELETE USER
-userRouter.delete('/:id', (req, res) => {
-    const {id} = req.params;
+userRouter.delete('/:user_id', (req, res) => {
+    const {user_id} = req.params;
 
-  UserService.delete(id)
+  UserService.delete(user_id)
     .then(() => {
-      res.json({ success: `Pet with ID: ${id} deleted.`});
+      res.json({ success: `User with ID: ${user_id} deleted.`});
     })
     .catch(err => {
       res.json(err.toString());

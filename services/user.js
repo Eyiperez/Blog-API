@@ -17,6 +17,11 @@ UserService.addToken = (username, token) => {
     return db.none('UPDATE users SET token = ${token} WHERE username=${username}', { username, token });
 }
 
+//READ TOKEN
+UserService.readToken = (id) => {
+    return db.any('SELECT token FROM users WHERE id=${id}', { id: id });
+}
+
 //READ USER
 UserService.read = (id) => {
     return db.one('SELECT username, email, id FROM users WHERE id=${id}', { id: id });
