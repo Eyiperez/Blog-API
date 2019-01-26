@@ -1,5 +1,4 @@
-const pgp = require('pg-promise')({});
-const db = pgp('postgres://localhost/blog');
+const {db} = require ('../pgp');
 const PostService = {};
 
 //CREATE POST

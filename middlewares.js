@@ -8,7 +8,7 @@ const checkForToken = (req, res, next) => {
     const bodyObj = req.body
     const pathArr = req.path.split('/');
     let user_id = 0
-    if (pathArr[1] === 'post') {
+    if (pathArr[1] === 'post' && bodyObj.author === null) {
         const post_id = pathArr[pathArr.length - 1]
         return PostService.readAuthor(post_id)
             .then((data) => {
@@ -58,6 +58,7 @@ const checkForToken = (req, res, next) => {
     UserService.readToken(user_id)
         .then((data) => {
             if (data[0].token === authTokenInput) {
+                console.log('logged in')
                 next()
             } else {
                 throw new Error('not logged in')
@@ -69,9 +70,6 @@ const checkForToken = (req, res, next) => {
                 "err": e.toString(),
             })
         })
-
-
-
 }
 
 
