@@ -16,9 +16,9 @@ postRouter.post('/', (req,res) => {
       })
 });
 
-// PUT - UPDATE USER
+// PUT - UPDATE POST
 postRouter.put('/:id', (req,res) => {
-    const { author,title, body} = req.body;
+    const { author, title, body} = req.body;
     const {id } = req.params
     PostService.update(id, author, title, body)
     .then(() =>{
@@ -30,7 +30,7 @@ postRouter.put('/:id', (req,res) => {
       })
 });
 
-// DELETE - DELETE USER
+// DELETE - DELETE POST
 postRouter.delete('/:id', (req, res) => {
     const {id} = req.params;
 

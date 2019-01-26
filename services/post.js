@@ -29,7 +29,7 @@ PostService.update = (id, author, title, body) => {
 
 //DELETE POST
 PostService.delete = (id) => { 
-    return db.none('DELETE FROM posts WHERE id=${id}', {id});
+    return db.none('DELETE FROM comments WHERE post_id=${id}; DELETE FROM posts WHERE id=${id}', {id});
 }
 
 

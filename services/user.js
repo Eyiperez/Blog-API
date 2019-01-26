@@ -54,7 +54,7 @@ UserService.update = (id, username, email, password) => {
 
 //DELETE USER
 UserService.delete = (id) => {
-    return db.none('DELETE FROM users WHERE id=${id}', { id });
+    return db.none('DELETE FROM users WHERE id=${id}', { id: id });
 }
 
 module.exports = UserService;
